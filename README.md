@@ -2,7 +2,7 @@ maven-archetype-webapp
 
 Exercice 1 : Ajouter un entité nommé 'ProductCategory'
 
-Créez une nouvelle classe ProductCategory dans.
+Créez une nouvelle classe ProductCategory.
 
 Cette entité doit représenter une catégorie de produits et contenir les attributs suivants :
  - id : Identifiant unique (Long).
