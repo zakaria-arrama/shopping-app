@@ -6,12 +6,12 @@
     <persistence-unit name="shoppingAppPersistenceUnit" transaction-type="RESOURCE_LOCAL">
         <class>ma.formation.productmanagement.domain.Customer</class>
         <properties>
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/formation_jpa_jsf_sping"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/shopping-app?serverTimezone=Europe/Amsterdam&amp;"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value="toor"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
             
-            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="eclipselink.ddl-generation.output-mode" value="database" />
             <property name="eclipselink.logging.level" value="FINE"/>
             

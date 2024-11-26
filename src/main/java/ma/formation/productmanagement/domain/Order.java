@@ -1,15 +1,15 @@
 package ma.formation.productmanagement.domain;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 public class Order {
-
+	
     private Long id;
     private LocalDate orderDate;
     private Double totalPrice;
-
-    // Relation avec Customer (clé étrangère)
     private Customer customer;
+    private Set<Product> products;
 
     public Long getId() {
         return id;
@@ -35,14 +35,23 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-    public Order getCustomer() {
-        return customer;
-    }
+	public Customer getCustomer() {
+		return customer;
+	}
 
-    public void setCustomer(Order customer) {
-        this.customer = customer;
-    }
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 
+	public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
+
+  
 
 
 }

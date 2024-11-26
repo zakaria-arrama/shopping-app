@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
+                 version="2.1">
+
+    <!-- Customer Entity -->
+    <entity class="ma.formation.productmanagement.domain.Customer" name="customer">
+        <table name="Customer"/>
+        <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="firstName">
+                <column name="first_name" nullable="false"/>
+            </basic>
+            <basic name="lastName">
+                <column name="last_name" nullable="false"/>
+            </basic>
+            <basic name="email">
+                <column name="email" unique="true" nullable="false"/>
+            </basic>
+            <basic name="phoneNumber">
+                <column name="phone_number"/>
+            </basic>
+            <basic name="adresse">
+                <column name="adresse_1"/>
+            </basic>
+            <one-to-many name="orders" target-entity="ma.formation.productmanagement.domain.Order" mapped-by="customer" />
+        </attributes>
+    </entity>
+
+    <entity class="ma.formation.productmanagement.domain.Order" name="order">
+        <table name="orders" />
+        <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY" />
+            </id>
+            <basic name="orderDate">
+                <column name="order_date" nullable="false" />
+            </basic>
+            <basic name="totalPrice">
+                <column name="total_price" />
+            </basic>
+
+            <many-to-one name="customer">
+                <join-column name="customer_id" nullable="false" referenced-column-name="id" />
+            </many-to-one>
+            
+     	     <many-to-many name="products" target-entity="ma.formation.productmanagement.domain.Product">
+     	     	<join-table name="order_product">
+     	     		<join-column name="order_id" referenced-column-name="id"/>
+     	     		<inverse-join-column name="product_id" referenced-column-name="id"/>
+     	     	</join-table>
+     	     </many-to-many>
+            
+        </attributes>
+    </entity>
+
+
+    <entity class="ma.formation.productmanagement.domain.Product" name="product">
+    	<table name="products" />
+    	<attributes>
+	        <id name="id">
+	            <generated-value strategy="IDENTITY" />
+	        </id>
+	         <basic name="name">
+	         	<column name="name" nullable="false" />
+	     	</basic>
+	     	<basic name="description">
+	         	<column name="description" />
+	     	</basic>
+	     	<basic name="price">
+	         	<column name="price" nullable="true" precision="10" scale="2" />
+	     	</basic>
+	     	
+	     	<many-to-many name="orders" target-entity="ma.formation.productmanagement.domain.Order" mapped-by="products"></many-to-many>
+    	</attributes>
+    </entity>
+
+</entity-mappings>
