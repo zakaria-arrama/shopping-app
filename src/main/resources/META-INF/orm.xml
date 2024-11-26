@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
+                 version="2.1">
+
+    <!-- Customer Entity -->
+    <entity class="ma.formation.productmanagement.domain.Customer" name="Customer">
+        <table name="Customer"/>
+        <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="firstName">
+                <column name="first_name" nullable="false"/>
+            </basic>
+            <basic name="lastName">
+                <column name="last_name" nullable="false"/>
+            </basic>
+            <basic name="email">
+                <column name="email" unique="true" nullable="false"/>
+            </basic>
+            <basic name="phoneNumber">
+                <column name="phone_number"/>
+            </basic>
+        </attributes>
+    </entity>
+
+</entity-mappings>
