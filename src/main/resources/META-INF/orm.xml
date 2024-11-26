@@ -26,4 +26,24 @@
         </attributes>
     </entity>
 
+    <entity class="ma.formation.productmanagement.domain.Order" name="Order">
+        <table name="orders" />
+        <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY" />
+            </id>
+            <basic name="orderDate">
+                <column name="order_date" nullable="false" />
+            </basic>
+            <basic name="totalPrice">
+                <column name="total_price" />
+            </basic>
+
+            <!-- Relation ManyToOne avec Customer -->
+            <many-to-one name="customer">
+                <join-column name="customer_id" nullable="false" referenced-column-name="id" />
+            </many-to-one>
+        </attributes>
+    </entity>
+
 </entity-mappings>
