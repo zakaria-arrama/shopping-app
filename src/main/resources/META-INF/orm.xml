@@ -18,7 +18,7 @@
                 <column name="last_name" nullable="false"/>
             </basic>
             <basic name="email">
-                <column name="email" unique="true" nullable="false"/>
+                <column name="email" unique="false" nullable="false"/>
             </basic>
             <basic name="phoneNumber">
                 <column name="phone_number"/>
@@ -73,8 +73,28 @@
 	     	<basic name="price">
 	         	<column name="price" nullable="true" precision="10" scale="2" />
 	     	</basic>
-	     	
+	     	<many-to-one name="productCategory" target-entity="ma.formation.productmanagement.domain.ProductCategory">
+	     		<join-column name="category_id"/>
+	     	</many-to-one>
 	     	<many-to-many name="orders" target-entity="ma.formation.productmanagement.domain.Order" mapped-by="products"></many-to-many>
+	     	
+    	</attributes>
+    </entity>
+    
+    <entity class="ma.formation.productmanagement.domain.ProductCategory" name="product_category">
+    	<table name="product_category" />
+    	<attributes>
+    		<id name="id">
+	            <generated-value strategy="IDENTITY" />
+	        </id>
+	        <basic name="code">
+	         	<column name="code" nullable="false" />
+	     	</basic>
+	     	<basic name="libelle">
+	         	<column name="libelle" nullable="false" />
+	     	</basic>
+	     	
+	     	<one-to-many name="products" target-entity="ma.formation.productmanagement.domain.Product" mapped-by="productCategory"/>
     	</attributes>
     </entity>
 

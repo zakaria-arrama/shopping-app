@@ -9,6 +9,7 @@ public class Product {
 	private String description;
 	private Double price;
     private Set<Order> orders;
+    private ProductCategory productCategory;
     
 	public Long getId() {
 		return id;
@@ -40,6 +41,13 @@ public class Product {
 	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
 	}
+	public ProductCategory getProductCategory() {
+		return productCategory;
+	}
+	public void setProductCategory(ProductCategory productCategory) {
+		this.productCategory = productCategory;
+	}
+
     
     
 
