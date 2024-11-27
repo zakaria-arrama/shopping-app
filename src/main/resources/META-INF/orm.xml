@@ -5,7 +5,7 @@
                  version="2.1">
 
     <!-- Customer Entity -->
-    <entity class="ma.formation.productmanagement.domain.Customer" name="customer">
+    <entity class="ma.formation.productmanagement.domain.Customer" name="Customer">
         <table name="Customer"/>
         <attributes>
             <id name="id">
@@ -58,8 +58,8 @@
     </entity>
 
 
-    <entity class="ma.formation.productmanagement.domain.Product" name="product">
-    	<table name="products" />
+    <entity class="ma.formation.productmanagement.domain.Product" name="Product">
+    	<table name="Product" />
     	<attributes>
 	        <id name="id">
 	            <generated-value strategy="IDENTITY" />

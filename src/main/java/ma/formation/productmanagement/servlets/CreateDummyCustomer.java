@@ -38,5 +38,6 @@ public class CreateDummyCustomer extends HttpServlet {
 			resp.getWriter().println("Erreur durant la création du Customer ");
 		}
 		
+		
 	}
 }
