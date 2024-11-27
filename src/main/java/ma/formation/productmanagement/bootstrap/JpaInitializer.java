@@ -14,7 +14,7 @@ public class JpaInitializer implements ServletContextListener{
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         emf = Persistence.createEntityManagerFactory("shoppingAppPersistenceUnit");
-        System.out.println("JPA Initialized with Persistence Unit: your-persistence-unit");
+        System.out.println("JPA Initialized with Persistence Unit: shoppingAppPersistenceUnit");
     }
 
     @Override
