@@ -3,45 +3,28 @@ package ma.formation.productmanagement.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
-import ma.formation.productmanagement.domain.Customer;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import ma.formation.productmanagement.domain.Product;
 
+@Repository
 public class ProductDAOImpl implements ProductDAO{
 
-	protected EntityManagerFactory emf;
+    @PersistenceContext
+    private EntityManager em;
 	
-	
-    public ProductDAOImpl(EntityManagerFactory emf) {
-        this.emf = emf; // Injected by Spring
-    }
-    
 	@Override
+	@Transactional
 	public void create(Product product) {
-		EntityManager em = emf.createEntityManager();
-		try {
-			em = emf.createEntityManager();
-			em.getTransaction().begin();
-			em.persist(product);
-			em.getTransaction().commit();
-			System.out.println("Customer created : "+ product.getId() + " " + product.getName());
-		}catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			em.close();
-		}
-
-		
+		em.persist(product);
 	}
 
 	@Override
 	public List<Product> listAll() {		
-		EntityManager em = emf.createEntityManager();
-		List<Product> listOfProducts;
-		listOfProducts =  em.createQuery("SELECT p FROM Product p",Product.class).getResultList();
-		return listOfProducts;
+		return  em.createQuery("SELECT p FROM Product p",Product.class).getResultList();
 	}
 
 	

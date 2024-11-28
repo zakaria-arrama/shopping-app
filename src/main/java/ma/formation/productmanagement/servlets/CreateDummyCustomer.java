@@ -40,6 +40,7 @@ public class CreateDummyCustomer extends HttpServlet {
 			resp.getWriter().println("Utilisateur crée avec succès : "+customer.getId() + "|" + customer.getEmail());
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			resp.getWriter().println("Erreur durant la création du Customer ");
 		}
 		

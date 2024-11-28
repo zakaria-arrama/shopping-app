@@ -38,6 +38,7 @@ public class CreateProduct extends HttpServlet{
 			resp.getWriter().println("Produit crée avec succès : "+product.getId() + "|" + product.getName());
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			resp.getWriter().println("Erreur durant la création du produit ");
 		}
 		

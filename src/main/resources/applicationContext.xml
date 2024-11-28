@@ -1,20 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx.xsd
+           http://www.springframework.org/schema/context 
+           http://www.springframework.org/schema/context/spring-context.xsd">
 
+
+    <!-- Persistence Unit -->
     <bean id="entityManagerFactory" class="javax.persistence.Persistence" factory-method="createEntityManagerFactory">
         <constructor-arg value="shoppingAppPersistenceUnit" />
     </bean>
 
-    <bean id="customerDAO" class="ma.formation.productmanagement.dao.CustomerDAOImpl">
-        <constructor-arg ref="entityManagerFactory" />
+    <!-- Transaction Manager -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
     
-    <bean id="productDAO" class="ma.formation.productmanagement.dao.ProductDAOImpl">
-        <constructor-arg ref="entityManagerFactory" />
-    </bean>
+    <bean id="entityManager" factory-bean="entityManagerFactory" factory-method="createEntityManager" />
+    
+
+    <!-- Enable Annotation-Driven Transactions -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+	<context:component-scan base-package="ma.formation.productmanagement.dao" />
+
+    <bean id="customerDAO" class="ma.formation.productmanagement.dao.CustomerDAOImpl" />
+    
+    <bean id="productDAO" class="ma.formation.productmanagement.dao.ProductDAOImpl" />
     
     
 </beans>
