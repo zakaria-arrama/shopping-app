@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>JSF Example</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel value="First Name:" />
+            <h:inputText value="#{customerBean.firstName}" />
+
+            <h:outputLabel value="Last Name:" />
+            <h:inputText value="#{customerBean.lastName}" />
+        </h:panelGrid>
+
+        <h:commandButton value="Save" action="#{customerBean.saveCustomer}" />
+    </h:form>
+
+    <h:dataTable value="#{customerBean.customers}" var="customer">
+        <h:column>
+            #{customer}
+        </h:column>
+    </h:dataTable>
+</h:body>
+</html>
