@@ -1,8 +1,5 @@
 package ma.formation.productmanagement.servlets;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -12,12 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import ma.formation.productmanagement.dao.CustomerDAO;
-import ma.formation.productmanagement.dao.CustomerDAOImpl;
-import ma.formation.productmanagement.dao.ProductDAO;
-import ma.formation.productmanagement.dao.ProductDAOImpl;
 import ma.formation.productmanagement.domain.Customer;
-import ma.formation.productmanagement.domain.Product;
+import ma.formation.productmanagement.domain.Order;
 
 @WebServlet("/showCustomers")
 public class ShowCustomers extends HttpServlet{
@@ -39,6 +36,9 @@ public class ShowCustomers extends HttpServlet{
 
 		for(Customer customerItem : listDeCustomers) {
 			resp.getWriter().println(" - "+customerItem.getId()+"|"+customerItem.getFirstName());
+				for(Order o: customerItem.getOrders()) {
+					resp.getWriter().println(" - "+o.getId()+"|"+o.getTotalPrice());
+				}
 		}
 	}
 

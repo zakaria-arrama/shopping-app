@@ -34,5 +34,7 @@
     
     <bean id="productDAO" class="ma.formation.productmanagement.dao.ProductDAOImpl" />
     
+    <bean id="orderDAO" class="ma.formation.productmanagement.dao.OrderDAOImpl" />
     
+   
 </beans>

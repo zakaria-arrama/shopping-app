@@ -8,7 +8,6 @@ import ma.formation.productmanagement.domain.Customer;
 public interface CustomerDAO {
 	
 	void create(Customer customer) ;
-
 	List<Customer> listAll();
 
 
