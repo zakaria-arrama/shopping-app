@@ -13,6 +13,18 @@
 
             <h:outputLabel value="Last Name:" />
             <h:inputText value="#{customerBean.lastName}" />
+            
+            <h:outputLabel value="Email:" />
+            <h:inputText value="#{customerBean.email}" />
+            
+            <h:outputLabel value="Num tél" />
+            <h:inputText value="#{customerBean.phoneNumber}" />
+            
+            
+            <h:outputLabel value="Addr" />
+            <h:inputText value="#{customerBean.adresse}" />
+            
+            
         </h:panelGrid>
 
         <h:commandButton value="Save" action="#{customerBean.saveCustomer}" />
