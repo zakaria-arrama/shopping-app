@@ -14,11 +14,10 @@ public class CustomerDAOImpl implements CustomerDAO{
 	protected EntityManagerFactory emf;
 
 	
-	public CustomerDAOImpl() {
-		this.emf = Persistence.createEntityManagerFactory("shoppingAppPersistenceUnit");
-
-	}
-
+    public CustomerDAOImpl(EntityManagerFactory emf) {
+        this.emf = emf; // Injected by Spring
+    }
+    
 	@Override
 	public void create(Customer customer)  {	
 		EntityManager em = emf.createEntityManager();

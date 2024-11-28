@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import ma.formation.productmanagement.dao.ProductDAO;
 import ma.formation.productmanagement.dao.ProductDAOImpl;
 import ma.formation.productmanagement.domain.Product;
@@ -19,7 +22,9 @@ public class CreateProduct extends HttpServlet{
 	
 	@Override
 	public void init() throws ServletException {
-		productDAO = new ProductDAOImpl();
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        this.productDAO = (ProductDAO) context.getBean("productDAO");
+
 	}
 	
 	@Override

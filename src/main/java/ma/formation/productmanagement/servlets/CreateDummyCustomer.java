@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import ma.formation.productmanagement.dao.CustomerDAO;
 import ma.formation.productmanagement.dao.CustomerDAOImpl;
 import ma.formation.productmanagement.domain.Customer;
@@ -19,7 +22,9 @@ public class CreateDummyCustomer extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
-		customerDAO = new CustomerDAOImpl();
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        this.customerDAO = (CustomerDAO) context.getBean("customerDAO");
+
 	}
 	
 	@Override

@@ -1,5 +1,8 @@
 package ma.formation.productmanagement.servlets;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -23,7 +26,9 @@ public class ShowCustomers extends HttpServlet{
 	
 	@Override
 	public void init() throws ServletException {
-		customerDAO = new CustomerDAOImpl();
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        this.customerDAO = (CustomerDAO) context.getBean("customerDAO");
+
 	}
 	
 	@Override

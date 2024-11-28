@@ -9,12 +9,18 @@ import javax.persistence.Persistence;
 import ma.formation.productmanagement.domain.Customer;
 import ma.formation.productmanagement.domain.Product;
 
-public class ProductDAOImpl extends AbstractDAO implements ProductDAO{
+public class ProductDAOImpl implements ProductDAO{
 
-	EntityManager em;
+	protected EntityManagerFactory emf;
 	
+	
+    public ProductDAOImpl(EntityManagerFactory emf) {
+        this.emf = emf; // Injected by Spring
+    }
+    
 	@Override
 	public void create(Product product) {
+		EntityManager em = emf.createEntityManager();
 		try {
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
@@ -32,7 +38,7 @@ public class ProductDAOImpl extends AbstractDAO implements ProductDAO{
 
 	@Override
 	public List<Product> listAll() {		
-		em = emf.createEntityManager();
+		EntityManager em = emf.createEntityManager();
 		List<Product> listOfProducts;
 		listOfProducts =  em.createQuery("SELECT p FROM Product p",Product.class).getResultList();
 		return listOfProducts;
