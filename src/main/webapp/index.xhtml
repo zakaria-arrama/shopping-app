@@ -1,39 +1,83 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>JSF Example</title>
+	<title>JSF Example</title>
 </h:head>
 <h:body>
-    <h:form>
-        <h:panelGrid columns="2">
-            <h:outputLabel value="First Name:" />
-            <h:inputText value="#{customerBean.firstName}" />
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" size="50" resizable="true">
+			<h:outputText value="Header" />
+		</p:layoutUnit>
 
-            <h:outputLabel value="Last Name:" />
-            <h:inputText value="#{customerBean.lastName}" />
-            
-            <h:outputLabel value="Email:" />
-            <h:inputText value="#{customerBean.email}" />
-            
-            <h:outputLabel value="Num tél" />
-            <h:inputText value="#{customerBean.phoneNumber}" />
-            
-            
-            <h:outputLabel value="Addr" />
-            <h:inputText value="#{customerBean.adresse}" />
-            
-            
-        </h:panelGrid>
+		<p:layoutUnit position="south" size="50" resizable="true">
+			<h:outputText value="Footer" />
+		</p:layoutUnit>
 
-        <h:commandButton value="Save" action="#{customerBean.saveCustomer}" />
-    </h:form>
+		<p:layoutUnit position="west" size="200" resizable="true">
+		    <p:link outcome="productDetail" value="Détails produit #4">
+		        <f:param name="productId" value="4"/>
+		    </p:link>
+		</p:layoutUnit>
 
-    <h:dataTable value="#{customerBean.customers}" var="customer">
-        <h:column>
-            #{customer}
-        </h:column>
-    </h:dataTable>
+		<p:layoutUnit position="center">
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="First Name:" />
+					<h:inputText value="#{customerBean.firstName}" />
+
+					<h:outputLabel value="Last Name:" />
+					<h:inputText value="#{customerBean.lastName}" />
+
+					<h:outputLabel value="Email:" />
+					<h:inputText value="#{customerBean.email}" />
+
+					<h:outputLabel value="Num tél" />
+					<h:inputText value="#{customerBean.phoneNumber}" />
+
+
+					<h:outputLabel value="Addr" />
+					<h:inputText value="#{customerBean.adresse}" />
+
+
+				</h:panelGrid>
+
+				<h:commandButton value="Save" action="#{customerBean.saveCustomer}" />
+			</h:form>
+
+		    <h:form>
+		        <p:dataTable value="#{customerBean.customers}" var="customer" paginator="true" rows="10">
+		            <p:column headerText="ID">
+		                <h:outputText value="#{customer.id}" />
+		            </p:column>
+		            <p:column headerText="First Name">
+		                <h:outputText value="#{customer.firstName}" />
+		            </p:column>
+		            <p:column headerText="Last Name">
+		                <h:outputText value="#{customer.lastName}" />
+		            </p:column>
+		            <p:column headerText="Email">
+		                <h:outputText value="#{customer.email}" />
+		            </p:column>
+		            <p:column headerText="Phone Number">
+		                <h:outputText value="#{customer.phoneNumber}" />
+		            </p:column>
+		            <p:column headerText="Address">
+		                <h:outputText value="#{customer.adresse}" />
+		            </p:column>
+		        </p:dataTable>
+		        
+		                <p:selectManyButton value="#{selectManyButtonView.selectedOptions}">
+            <f:selectItem itemLabel="Option 1" itemValue="Option 1"/>
+            <f:selectItem itemLabel="Option 2" itemValue="Option 2"/>
+            <f:selectItem itemLabel="Option 3" itemValue="Option 3"/>
+        </p:selectManyButton>
+		        
+		    </h:form>
+    	</p:layoutUnit>
+	</p:layout>
 </h:body>
 </html>

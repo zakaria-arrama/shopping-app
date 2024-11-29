@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<f:metadata>
+    <f:viewAction action="#{productDetailBean.initialize()}" />
+</f:metadata>
+  
+<h:head>
+    <title>Product Detail</title>
+</h:head>
+<h:body>
+    <h1>Product Detail</h1>
+
+	<h:outputText value="#{productDetailBean.productId}" />
+
+	<h:panelGrid columns="2">
+        <h:outputText value="Product Identifier:" />
+        <h:outputText value="#{productDetailBean.product.id}" />
+
+        <h:outputText value="Nom" />
+        <h:outputText value="#{productDetailBean.product.name}" />
+
+        <h:outputText value="Description:" />
+        <h:outputText value="#{productDetailBean.product.description}" />
+
+        <h:outputText value="Price:" />
+        <h:outputText value="#{productDetailBean.product.price}" />
+    </h:panelGrid>
+</h:body>
+</html>

@@ -24,19 +24,20 @@ public class CustomerBean {
     @ManagedProperty("#{customerDAO}")
     private CustomerDAO customerDAO;
 
+    
+    private List<Customer> customers;
 
     
-    private List<String> customers = new ArrayList<>();
 
     public void saveCustomer() {
     	Customer customer = new Customer();
-        customers.add(firstName + " " + lastName);        
         customer.setFirstName(firstName);
         customer.setLastName(lastName);
         customer.setEmail(email);
         customer.setAdresse(adresse);
         customer.setPhoneNumber(phoneNumber);
-        
+        customers.add(customer);        
+
         customerDAO.create(customer);
         
         
@@ -48,8 +49,13 @@ public class CustomerBean {
 
     }
 
-    public List<String> getCustomers() {
-        return customers;
+
+    public List<Customer> getCustomers() {
+	    if (customers == null) {
+	        customers = customerDAO.listAll();
+	    }
+	    return customers;
+
     }
 
     // Getters and Setters
@@ -93,7 +99,7 @@ public class CustomerBean {
 		this.adresse = adresse;
 	}
 
-	public void setCustomers(List<String> customers) {
+	public void setCustomers(List<Customer> customers) {
 		this.customers = customers;
 	}
     
@@ -102,4 +108,14 @@ public class CustomerBean {
 	}
 
     
+    private List<String> selectedOptions;
+
+    public List<String> getSelectedOptions() {
+        return selectedOptions;
+    }
+
+    public void setSelectedOptions(List<String> selectedOptions) {
+        this.selectedOptions = selectedOptions;
+    }
+
 }

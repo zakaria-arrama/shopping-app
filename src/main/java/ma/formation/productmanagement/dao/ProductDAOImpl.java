@@ -27,6 +27,11 @@ public class ProductDAOImpl implements ProductDAO{
 		return  em.createQuery("SELECT p FROM Product p",Product.class).getResultList();
 	}
 
+	@Override
+	public Product findById(long id) {
+		return em.find(Product.class, id);
+	}
+
 	
 
 }
