@@ -1,7 +1,8 @@
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
       
 <h:head>
     <title>Show Customers</title>
@@ -9,32 +10,26 @@
 
 <h:body>
     <h:form>
-        <h:dataTable value="#{showCustomersManagedBean.customers}" var="customer" border="1">
-            <h:column>
-                <f:facet name="header">ID</f:facet>
+        <p:dataTable value="#{showCustomersManagedBean.customers}" var="customer" paginator="true" rows="10">
+            <p:column headerText="ID">
                 <h:outputText value="#{customer.id}" />
-            </h:column>
-            <h:column>
-                <f:facet name="header">First Name</f:facet>
+            </p:column>
+            <p:column headerText="First Name">
                 <h:outputText value="#{customer.firstName}" />
-            </h:column>
-            <h:column>
-                <f:facet name="header">Last Name</f:facet>
+            </p:column>
+            <p:column headerText="Last Name">
                 <h:outputText value="#{customer.lastName}" />
-            </h:column>
-            <h:column>
-                <f:facet name="header">Email</f:facet>
+            </p:column>
+            <p:column headerText="Email">
                 <h:outputText value="#{customer.email}" />
-            </h:column>
-            <h:column>
-                <f:facet name="header">Phone Number</f:facet>
+            </p:column>
+            <p:column headerText="Phone Number">
                 <h:outputText value="#{customer.phoneNumber}" />
-            </h:column>
-            <h:column>
-                <f:facet name="header">Address</f:facet>
+            </p:column>
+            <p:column headerText="Address">
                 <h:outputText value="#{customer.adresse}" />
-            </h:column>
-        </h:dataTable>
-    </h:form>    
+            </p:column>
+        </p:dataTable>
+    </h:form>
 </h:body>
 </html>
