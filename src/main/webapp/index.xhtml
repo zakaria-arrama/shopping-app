@@ -15,21 +15,21 @@
 <br />
 			<h:form>
 				<h:panelGrid columns="2">
-					<h:outputLabel value="First Name:" />
-					<h:inputText value="#{customerBean.firstName}" />
+					<p:outputLabel value="First Name:"  />
+					<p:inputText value="#{customerBean.firstName}" required="true"/>
 
-					<h:outputLabel value="Last Name:" />
-					<h:inputText value="#{customerBean.lastName}" />
+					<p:outputLabel value="Last Name:" />
+					<p:inputText value="#{customerBean.lastName}" />
 
-					<h:outputLabel value="Email:" />
-					<h:inputText value="#{customerBean.email}" />
+					<p:outputLabel value="Email:" />
+					<p:inputText value="#{customerBean.email}" />
 
-					<h:outputLabel value="Num tél" />
-					<h:inputText value="#{customerBean.phoneNumber}" />
+					<p:outputLabel value="Num tél" />
+					<p:inputText value="#{customerBean.phoneNumber}" />
 
 
-					<h:outputLabel value="Addr" />
-					<h:inputText value="#{customerBean.adresse}" />
+					<p:outputLabel value="Addr" />
+					<p:inputText value="#{customerBean.adresse}" />
 
 
 				</h:panelGrid>
