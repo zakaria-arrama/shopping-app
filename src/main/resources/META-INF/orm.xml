@@ -97,5 +97,37 @@
 	     	<one-to-many name="products" target-entity="ma.formation.productmanagement.domain.Product" mapped-by="productCategory"/>
     	</attributes>
     </entity>
+    
+    <entity class="ma.formation.productmanagement.domain.Vehicle" name="Vehicle">
+	    <table name="Vehicle"/>
+	    <inheritance strategy="JOINED"/>
+	    <attributes>
+	        <id name="id">
+	            <generated-value strategy="IDENTITY"/>
+	        </id>
+	        <basic name="make">
+	            <column name="make"/>
+	        </basic>
+	        <basic name="model">
+	            <column name="model"/>
+	        </basic>
+	    </attributes>
+	</entity>
+
+	<entity class="ma.formation.productmanagement.domain.Car" name="Car">
+	    <attributes>
+	        <basic name="seats">
+	            <column name="seats"/>
+	        </basic>
+	    </attributes>
+	</entity>
+	
+	<entity class="ma.formation.productmanagement.domain.Bike" name="Bike">
+	    <attributes>
+	        <basic name="type">
+	            <column name="type"/>
+	        </basic>
+	    </attributes>
+	</entity>
 
 </entity-mappings>

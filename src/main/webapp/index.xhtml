@@ -12,9 +12,9 @@
 		    <p:link outcome="productDetail" value="Détails produit #4">
 		        <f:param name="productId" value="4"/>
 		    </p:link>
-<br />
+			<br />
 			<h:form>
-				<h:panelGrid columns="2">
+				<p:panelGrid columns="2">
 					<p:outputLabel value="First Name:"  />
 					<p:inputText value="#{customerBean.firstName}" required="true"/>
 
@@ -32,13 +32,13 @@
 					<p:inputText value="#{customerBean.adresse}" />
 
 
-				</h:panelGrid>
+				</p:panelGrid>
 
-				<h:commandButton value="Save" action="#{customerBean.saveCustomer}" />
+				<p:commandButton value="Save" action="#{customerBean.saveCustomer}" oncomplete="PF('successDialog').show();"/>
 			</h:form>
 
 		    <h:form>
-		        <p:dataTable value="#{customerBean.customers}" var="customer" paginator="true" rows="10">
+		        <p:dataTable id="customerTable" value="#{customerBean.customers}" var="customer" paginator="true" rows="10">
 		            <p:column headerText="ID">
 		                <h:outputText value="#{customer.id}" />
 		            </p:column>
@@ -57,16 +57,34 @@
 		            <p:column headerText="Address">
 		                <h:outputText value="#{customer.adresse}" />
 		            </p:column>
+		            
+        		    <p:column headerText="Actions">
+					            <!-- Show Orders Action -->
+					        <p:commandButton icon="ui-icon-search" title="Show Orders"
+					                         action="#{customerBean.showOrders(customer)}"
+					                         ajax="false" />
+					        <!-- Edit Customer Action -->
+					        <p:commandButton icon="ui-icon-pencil" title="Edit Customer"
+					                         action="#{customerBean.editCustomer(customer)}"
+					                         ajax="false" />
+					        <!-- Delete Customer Action -->
+					        <p:commandButton icon="ui-icon-trash" title="Delete Customer"
+					                         action="#{customerBean.deleteCustomer(customer)}"
+					                         update="customerTable :messages" />
+					</p:column>
+		            
 		        </p:dataTable>
-		        
-                <p:selectManyButton value="#{selectManyButtonView.selectedOptions}">
-		            <f:selectItem itemLabel="Option 1" itemValue="Option 1"/>
-		            <f:selectItem itemLabel="Option 2" itemValue="Option 2"/>
-		            <f:selectItem itemLabel="Option 3" itemValue="Option 3"/>
-		        </p:selectManyButton>
-		        <p:panel>
-		        	AAAAAAAAAAAA
-		        </p:panel>
 		    </h:form>
+      		<p:messages id="messages" autoUpdate="true" />
+		  
+		  
+	<p:dialog id="successDialog" header="Success" widgetVar="successDialog" modal="true" closable="true">
+    	<h:outputText value="Customer has been successfully created!" />
+	</p:dialog>
+	
+	<p:dialog id="deleteDialog" header="Success" widgetVar="successDialog" modal="true" closable="true">
+    	<h:outputText value="Customer deleted successfully!" />
+	</p:dialog>
+		    
 </h:body>
 </html>

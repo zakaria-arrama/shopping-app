@@ -2,13 +2,17 @@ package ma.formation.productmanagement.jsf.beans;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import ma.formation.productmanagement.dao.CustomerDAO;
 import ma.formation.productmanagement.domain.Customer;
+import ma.formation.productmanagement.domain.Order;
 
 @ManagedBean
 @ViewScoped
@@ -47,6 +51,30 @@ public class CustomerBean {
         phoneNumber = null;
         adresse = null;
 
+    }
+
+    public void showOrders(Customer customer) {
+        System.out.println("Show Orders for Customer: " + customer.getId());
+        
+         Set<Order> orders = customer.getOrders();
+         if(orders!= null && orders.size() > 0)
+         for (Order order : orders) {
+			System.out.println(order.getId());
+		}
+
+    }
+
+    public void editCustomer(Customer customer) {
+        System.out.println("Edit Customer: " + customer.getId());
+    }
+
+    public void deleteCustomer(Customer customer) {
+        System.out.println("Delete Customer: " + customer.getId());
+        customers.remove(customer); // Remove from the list
+        //customerDAO.delete(customer); // Call DAO to delete from the database
+
+        FacesContext.getCurrentInstance().addMessage(null, 
+            new FacesMessage(FacesMessage.SEVERITY_ERROR, "Customer Deleted", "Customer " + customer.getId() + " has been removed."));
     }
 
 
