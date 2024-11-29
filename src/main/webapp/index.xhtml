@@ -8,22 +8,11 @@
 	<title>JSF Example</title>
 </h:head>
 <h:body>
-	<p:layout fullPage="true">
-		<p:layoutUnit position="north" size="50" resizable="true">
-			<h:outputText value="Header" />
-		</p:layoutUnit>
 
-		<p:layoutUnit position="south" size="50" resizable="true">
-			<h:outputText value="Footer" />
-		</p:layoutUnit>
-
-		<p:layoutUnit position="west" size="200" resizable="true">
 		    <p:link outcome="productDetail" value="Détails produit #4">
 		        <f:param name="productId" value="4"/>
 		    </p:link>
-		</p:layoutUnit>
-
-		<p:layoutUnit position="center">
+<br />
 			<h:form>
 				<h:panelGrid columns="2">
 					<h:outputLabel value="First Name:" />
@@ -70,14 +59,14 @@
 		            </p:column>
 		        </p:dataTable>
 		        
-		                <p:selectManyButton value="#{selectManyButtonView.selectedOptions}">
-            <f:selectItem itemLabel="Option 1" itemValue="Option 1"/>
-            <f:selectItem itemLabel="Option 2" itemValue="Option 2"/>
-            <f:selectItem itemLabel="Option 3" itemValue="Option 3"/>
-        </p:selectManyButton>
-		        
+                <p:selectManyButton value="#{selectManyButtonView.selectedOptions}">
+		            <f:selectItem itemLabel="Option 1" itemValue="Option 1"/>
+		            <f:selectItem itemLabel="Option 2" itemValue="Option 2"/>
+		            <f:selectItem itemLabel="Option 3" itemValue="Option 3"/>
+		        </p:selectManyButton>
+		        <p:panel>
+		        	AAAAAAAAAAAA
+		        </p:panel>
 		    </h:form>
-    	</p:layoutUnit>
-	</p:layout>
 </h:body>
 </html>
